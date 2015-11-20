@@ -1,0 +1,36 @@
+<%@page import="domain.Bookmark" %>
+<%@ page import="domain.Catalog" %>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sidebar1">
+    <h4>Bookmarks:</h4>
+
+    <ul class="nav">
+        <c:forEach items="${catalogs}" var="catalog">
+
+            <li><a
+                    href="/fav/servlet.do?action=list&cat_id=<c:out value="${catalog.id}" />" ><img
+                    src="/fav/resources/images/folder.png" width="20px"/><c:out value="${catalog.name}"/></a></li>
+        </c:forEach>
+        <c:set var="currentCatalog" value="${param.cat_id}" scope="session"  />
+        <c:out value="${param.cat_id}" />
+    </ul>
+   <%-- <ul class="nav">
+
+
+        <jsp:useBean id="catList" class="dao.CatalogDao" scope="application"/>
+        <% try {
+            for (Catalog catalog : catList.getAll()) {
+        %>
+        <li><a href="/fav/pages/bmarks.jsp?cat_id=<%=catalog.getId()%>&title=<%=catalog.getName()%>"><img
+                src="/fav/resources/images/folder.png" width="20px"/> <%=catalog.getName()%>
+        </a></li>
+
+        <%
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
+    </ul>--%>
+</div>
